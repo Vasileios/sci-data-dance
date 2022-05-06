@@ -10,8 +10,6 @@ x[$A.asSymbol]
 //:
 ~file1data[3..4];
 
-//s.record("~/Documents/Projects/Research/Sonification/SonifyingCOVID2/soundExamples/recordings/Bat01_DCoff2_mono_Am7.wav".standardizePath);
-//s.record;
 ~files = "/Users/vasilis/Documents/Projects/Research/sonification/SonifyingCOVID2/data/*.fasta".pathMatch;
 //:
 ~files[0];
