@@ -14,8 +14,9 @@
 
 //:
 //~file1data[0][0].class;
-
-//://run this class first to eval granular sound and Pbindef(\grain)
+//sound 1 is the default SC sound - sine
+//sound 2 is granular synthesis sound from BA synths - https://github.com/Vasileios/BA
+//:run the bellow class to eval granular sound and Pbindef(\grain)
 //:
 BASynthGrainAn()
 //:
@@ -37,7 +38,7 @@ BASynthGrainAn()
 		~freqOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 2.0);//sound1 frequency
 		~freqOsc2 = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 2.0);//sound 2 frequency
 		~ampOsc2 = msg[0][1].asFloat.linlin(-9.0, 9.0, 0.0, 0.9);//sound 2 amp
-		~trigOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 100.0);
+		~trigOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 100.0);//sound 2 density
 		~rateOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1, 2);//sound 2 rate
 		~ampOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 0.0, 0.1);//sound 1 amp
 
