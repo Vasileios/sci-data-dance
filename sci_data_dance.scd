@@ -1,15 +1,16 @@
 //:
 
 
-$A.asSymbol;
+//$A.asSymbol;
 
-x = (A: 10);
+//x = (A: 10);
 
-x[$A.asSymbol]
+//x[$A.asSymbol]
 
 //:
-~file1data[3..4];
+//~file1data[3..4];
 
+//s.record;
 ~files = "/Users/vasilis/Documents/Projects/Research/sonification/SonifyingCOVID2/data/*.fasta".pathMatch;
 //:
 ~files[0];
@@ -19,7 +20,7 @@ x[$A.asSymbol]
 //:
 ~file1data[0][0].class;
 //:
-BASynthSines();
+//run this for granular synthesis
 BASynthGrainAn()
 //:
 {
@@ -31,7 +32,7 @@ BASynthGrainAn()
 		0.1.wait;
 		row[0] do: { | char |
 			char.asSymbol.postln;
-			//		BASynthSines();
+
 			~oscGlove = OSCdef(\oscTest,
 	{
 		| ... msg |
@@ -39,10 +40,10 @@ BASynthGrainAn()
 		~freqOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 2.0);
 		~trigOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 100.0);
 ~ampOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 0.0, 0.9);
-		//		(freq: ~freqOsc*~freqs[char.asSymbol].postln, mul:~ampOsc).play;
+		(freq: ~freqOsc*~freqs[char.asSymbol].postln, mul:~ampOsc).play;
 		//(freq: ~freqOsc).play;
-Pbindef(\grain, \rate, 1, \carfreq, 100,  \shape,~dur, \dur, ~dur, \trig, ~trigOsc).play;
-		//Pbindef(\sinepad, \freq, ~freqs*~freqOsc.postln, \amp, ~ampOsc.postln).play;
+Pbindef(\grain, \rate, 1, \carfreq, 100*~freqOsc,  \shape,~dur, \dur, ~dur, \trig, ~trigOsc).play;
+
 
 },
 	'/accelX'
@@ -63,12 +64,10 @@ Pbindef(\grain, \rate, 1, \carfreq, 100,  \shape,~dur, \dur, ~dur, \trig, ~trigO
 ~oscGlove2 = OSCdef(\oscTest2,
 	{
 		| ... msg |
-~dur = msg[0][1].asFloat.linlin(-9.0, 9.0, 0.01, 2.0);
-		//~freqOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 1.0, 2.0);
-		//~ampOsc = msg[0][1].asFloat.linlin(-9.0, 9.0, 0.0, 0.9);
+
+
 Pbindef(\grain, \vol, ~ampOsc, \amp, ~ampOsc).play;
-		//Pbindef(\sinepad, \fadeindr,~dur, \dur, ~dur, \fadeoutdr,~dur).play;
-		//(dur: ~dur).play;
+
 },
 	'/accelY'
 );
